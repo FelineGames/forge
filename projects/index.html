@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/dropdown.css">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Feline Games Projects</title>
+
+<meta name="description" content="All Your Desire in one place! (Only Maintained for bug fixes, no new feature)">
+
+<style>
+  :root{
+    --bg:#0b0b0f;
+    --panel:#0f0f14;
+    --muted:#bfc6cf;
+    --accent:#8ce0ff;
+    --card-border: rgba(255,255,255,0.04);
+    --radius:12px;
+    --pixel: 2px;
+    --gutter:20px;
+  }
+
+  .logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    flex: 0 0 56px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,#06060a 0%, #0b0b0f 100%);color:#eee;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+  a{color:var(--accent);text-decoration:none}
+  img{max-width:100%;display:block}
+
+  header{padding:28px 16px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03)}
+  .wrap{max-width:1100px;margin:32px auto;padding:0 18px}
+  .brand{display:flex;gap:14px;align-items:center}
+
+  header h1{font-size:20px;margin:0}
+  header p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+
+  /* Changed to relative to position the dropdown menu absolutely underneath */
+  .top-links{margin-left:auto;position:relative;}
+
+  .btn {
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:8px 12px;
+    border-radius:8px;
+    font-size:13px;
+    color:var(--muted);
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    cursor:pointer;
+  }
+  .btn.primary{background:linear-gradient(90deg,#0d6efd11,#8ce0ff11);border-color:rgba(140,224,255,0.12);color:var(--accent)}
+
+  /* Styles for the new rectangular dropdown menu */
+  .dropdown-menu-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #0f0f14;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 140px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+  
+  .dropdown-menu-panel .btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+  }
+
+  .dropdown-menu-panel .btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+  }
+
+  .hero{margin:28px 0 24px;padding:28px;border-radius:14px;background:
+    linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
+    border:1px solid rgba(255,255,255,0.02);display:flex;gap:18px;align-items:center;
+    box-shadow: 0 8px 30px rgba(2,6,12,0.6);
+  }
+  .hero .left{flex:1}
+  .hero h2{font-family:"Press Start 2P", "Courier New", monospace;margin:0 0 8px;font-size:20px;letter-spacing:0.6px}
+  .hero p{margin:0;color:var(--muted)}
+
+  .projects{
+    display:flex;flex-direction:column;gap:18px;margin-top:18px;
+  }
+  .card{
+    display:flex;flex-direction:row;gap:18px;align-items:flex-start;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+    border:1px solid var(--card-border);padding:16px;border-radius:12px;
+  }
+  .thumb{
+    width:140px;height:100px;border-radius:8px;flex:0 0 100px;
+    overflow:hidden;border:1px solid rgba(255,255,255,0.02);
+    background-size:cover;
+    background-position:center;
+  }
+  .card .meta{flex:1}
+  .card h3{margin:0 0 6px;font-family:"Press Start 2P", monospace;font-size:16px}
+  .card p{margin:0 0 12px;color:var(--muted);font-size:14px}
+  .card .links{display:flex;gap:10px;flex-wrap:wrap}
+
+  .bloxd_reimagined h3{color:lime}
+  .cubyz_reworked h3{color:purple}
+  .bloxd_porter h3{color:blue}
+  .skin_persona h3{color:green}
+  .revamp h3{color:red}
+  .reworked h3{color:orange}
+  .mc_specials h3{color:hotpink}
+
+  .link-btn{
+    padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);
+    background:rgba(255,255,255,0.01);font-size:13px;color:var(--muted);
+  }
+
+  footer{margin:48px 0 80px;color:var(--muted);text-align:center;font-size:13px}
+
+@media (max-width:760px){
+  .thumb{
+    width:100%;
+    aspect-ratio: 1 / 1;
+    height:auto;
+  }
+}
+  .pixel-grid{width:100%;height:6px;background:
+    linear-gradient(90deg,#0000 0 10px, rgba(255,255,255,0.02) 10px 11px) repeat-x;
+    margin-top:10px;border-radius:2px;opacity:0.7}
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+
+.tab{
+  padding:8px 14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.02);
+  color:var(--muted);
+  cursor:pointer;
+  font-size:13px;
+}
+
+.tab:hover{
+  background:rgba(255,255,255,0.05);
+}
+
+.tab.active{
+  color:var(--accent);
+  border-color:rgba(140,224,255,0.25);
+  background:linear-gradient(90deg,#0d6efd11,#8ce0ff11);
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="display:flex;align-items:center">
+
+    <div class="brand">
+      <div class="logo" style="background-image:url('./icons/sandbox_project.png');"></div>
+      <div>
+        <h1>Voxel Projects</h1>
+        <p>Everything you need in one place!</p>
+      </div>
+    </div>
+
+    <div class="top-links">
+      <div id="moreBtn" class="btn primary" style="font-size:12px;">| | |</div>
+      <div id="moreMenu" class="dropdown-menu-panel">
+        <a class="btn" href="../services/">Services</a>
+        <a class="btn" href="../newsletter/">Newsletter</a>
+      </div>      
+    </div>
+
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div class="left">
+<h2></h2>
+
+<div style="margin: 0 0 14px 0;">
+  <input 
+    type="text" 
+    id="searchInput" 
+    placeholder="Search Content..." 
+    style="
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+      font-size: 14px;
+      outline: none;
+    "
+  >
+</div>
+<div class="tabs">
+  <button class="tab active" data-tab="all">All</button>
+  <button class="tab" data-tab="minecraft">Minecraft</button>
+  <button class="tab" data-tab="cubyz">Cubyz</button>
+  <button class="tab" data-tab="bloxd">Bloxd</button>
+</div>
+
+<p class="muted"> Last Updated: 21-05-2026</p>
+      <div class="pixel-grid"></div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+  	
+       <article class="card revamp" data-category="minecraft">
+      <div class="thumb" style="background-image:url('./icons/main/revamp.png');"></div>
+      <div class="meta">
+        <h3>Minecraft Revamp [v2.0.4]</h3>
+        <p>Vanilla Edit 16x Pack For Minecraft Bedrock Edition (Original)</p>
+        <div class="links">
+          <a class="link-btn" href="https://drive.google.com/file/d/1ucySdDKv6FURApM_HH-5uu9G3cQO6WFU/view?pli=1" target="_blank">Download</a>
+          <a class="link-btn" href="https://drive.google.com/file/d/1CdQLNlr-fdJsfGk9D6n2ihirhUNzt3BP/view?usp=sharing" target="_blank">Changelogs</a>
+          <a class="link-btn" href="https://drive.google.com/drive/folders/1KNkNlnDMWrAB21ejKd76IBIt455i4uZu?usp=drive_link" target="_blank">Halt Rollout</a>
+        </div>
+      </div>
+    </article>
+	
+	    <article class="card reworked" data-category="minecraft">
+      <div class="thumb" style="background-image:url('./icons/main/reworked.png');"></div>
+      <div class="meta">
+        <h3>Minecraft Reworked</h3>
+        <p>Tweaked Vanilla Textures (Clean 16x edition)</p>
+        <div class="links">
+<div class="dropdown">
+  <button class="link-btn dropdown-btn">Download</button>
+  <div class="dropdown-content">
+    <a href="https://drive.google.com/file/d/14J8z8ZDzmUJCGK5ch78RrfpSKioLl1U7/view?usp=drive_link" target="_blank">v1.20.1</a>
+    </div>
+</div>
+          <a class="link-btn" href="https://drive.google.com/drive/folders/1XvQEh9IjF5jisiu4fnPMCMMzTtSuzs-6?usp=drive_link" target="_blank">Halt Rollout</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card mc_specials" data-category="minecraft">
+      <div class="thumb" style="background-image:url('./icons/main/mc_specials.png');"></div>
+      <div class="meta">
+        <h3>Better Minecraft (Special Edition)</h3>
+        <p>The cursed modern look of Minecraft Bedrock Edition.</p>
+        <div class="links">
+  <div class="dropdown">
+    <button class="link-btn dropdown-btn">Download</button>
+    <div class="dropdown-content">
+          <a href="https://drive.google.com/file/d/13yhmQV_DyjfMfYATsJ5JGY86w1AlGT2d/view?usp=drive_link" target="_blank">v1.5.0</a>
+          <a href="https://drive.google.com/file/d/1OaWyYO_CqvoOE2SMnFOT-WaAmZEGcojk/view?usp=drive_link" target="_blank">v1.0.5</a>
+        </div>
+      </div>
+    </article>
+
+          <article class="card bloxd_reimagined" data-category="bloxd">
+      <div class="thumb" style="background-image:url('./icons/main/bloxd_reimagined.png');"></div>
+      <div class="meta">
+        <h3>Bloxd Re-imagined</h3>
+        <p>Meant to be a patch/fix for the Popular Bloxd Minecraft Texture Pack to optimise Performance! (nightking)</p>
+        <div class="links">
+          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Reimagined" target="_blank">Github</a>
+        </div>
+      </div>
+    </article>
+    
+        <article class="card cubyz_reworked" data-category="cubyz">
+      <div class="thumb" style="background-image:url('./icons/main/cubyz_reworked.png');"></div>
+      <div class="meta">
+        <h3>Cubyz Reworked</h3>
+        <p>Ports the Original Minecraft Texture Pack to Cubyz & Provides a Familiar Look & Feel!</p>
+        <div class="links">
+          <a class="link-btn" href="https://github.com/FelineGames/Cubyz-Reworked" target="_blank">Github</a>
+        </div>
+      </div>
+    </article>
+    
+      <article class="card bloxd_porter" data-category="bloxd">
+      <div class="thumb" style="background-image:url('./icons/main/conversion_engine.png');"></div>
+      <div class="meta">
+        <h3>Bloxd Texture Port</h3>
+        <p>Allows for Quick Minecraft Bedrock Files to be ported to run on Bloxd (Processing Duration depends on Hardware)</p>
+        <div class="links">
+          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Porter" target="_blank">Github Repo</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card skin_persona" data-category="minecraft">
+      <div class="thumb" style="background-image:url('./icons/main/skin_persona.png');"></div>
+      <div class="meta">
+        <h3>Skin Persona V2.1</h3>
+        <p>Re-purposed Skin Pack for Java & Bedrock, Now Included with Christmas Version! (Original)</p>
+        <div class="links">
+  <div class="dropdown">
+    <button class="link-btn dropdown-btn">Download</button>
+    <div class="dropdown-content">
+          <a href="https://drive.google.com/file/d/1FznZxyE1pOXEWZgNGLxrTgH7bg2eX-vY/view?usp=drive_link" target="_blank">Java</a>
+          <a href="https://drive.google.com/file/d/1xRImYSjPvHr12aGWQHccN8s7AwcYGy-2/view?usp=drive_link" target="_blank">Bedrock</a>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>FelineGames have stopped providing new "Services & Projects" although we will maintain existing ones.</p>
+  </div>
+</footer>
+<script>
+document.addEventListener("click", (e) => {
+  document.querySelectorAll(".dropdown").forEach(dd => {
+    dd.classList.toggle("show", dd.contains(e.target));
+  });
+});
+
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+const tabs = document.querySelectorAll(".tab");
+
+let activeCategory = "all";
+
+function filterCards(){
+  const text = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    const desc = card.querySelector("p").textContent.toLowerCase();
+    const category = card.dataset.category;
+
+    const matchesText = title.includes(text) || desc.includes(text);
+    const matchesTab = activeCategory === "all" || category === activeCategory;
+
+    card.style.display = (matchesText && matchesTab) ? "flex" : "none";
+  });
+}
+
+searchInput.addEventListener("input", filterCards);
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    tabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    activeCategory = tab.dataset.tab;
+    filterCards();
+  });
+});
+
+const moreBtn = document.getElementById("moreBtn");
+const moreMenu = document.getElementById("moreMenu");
+
+moreBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  moreMenu.style.display = moreMenu.style.display === "flex" ? "none" : "flex";
+});
+
+document.addEventListener("click", () => {
+  moreMenu.style.display = "none";
+});
+</script>
+
+</body>
+</html>

@@ -1,364 +1,588 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="css/dropdown.css">
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Sandbox Projects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Minecraft/Cubyz/Bloxd Content all in one place!">
+    <title>Feline Games</title>
 
-<style>
-  :root{
-    --bg:#0b0b0f;
-    --panel:#0f0f14;
-    --muted:#bfc6cf;
-    --accent:#8ce0ff;
-    --card-border: rgba(255,255,255,0.04);
-    --radius:12px;
-    --pixel: 2px;
-    --gutter:20px;
-  }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 
-  .logo {
-    width: 56px;
-    height: 56px;
-    border-radius: 8px;
-    background-size: cover;
-    background-position: center;
-    flex: 0 0 56px;
-  }
+    <style>
+        :root {
+            /* Not hardlocked values */
+            --brand-font: 'Fredoka', 'Segoe UI', sans-serif;
+            --ui-font: 'Fredoka', 'Segoe UI', sans-serif;
+            
+            /* Change this value to effortlessly resize your 3 icons later */
+            --icon-size: 40px;
+        }
 
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:linear-gradient(180deg,#06060a 0%, #0b0b0f 100%);color:#eee;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
-  a{color:var(--accent);text-decoration:none}
-  img{max-width:100%;display:block}
+        /* Visual Styling and Aesthetics*/
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  header{padding:28px 16px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03)}
-  .wrap{max-width:1100px;margin:32px auto;padding:0 18px}
-  .brand{display:flex;gap:14px;align-items:center}
+        body {
+            background-color: #f9f9f9;
+            color: #333333;
+            min-height: 100vh;
+            padding-top: 80px; /* Prevents content from hiding behind the sticky navbar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  header h1{font-size:20px;margin:0}
-  header p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+        /* NEW CODE: Prevents the main page from scrolling when the modal popup is open */
+        body.no-scroll {
+            overflow: hidden;
+        }
 
-  .top-links{margin-left:auto;display:flex;gap:10px;align-items:center}
+        /* Navigation Bar*/
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
 
-  .btn {
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    padding:8px 12px;
-    border-radius:8px;
-    font-size:13px;
-    color:var(--muted);
-    display:inline-flex;
-    gap:8px;
-    align-items:center;
-    cursor:pointer;
-  }
-  .btn.primary{background:linear-gradient(90deg,#0d6efd11,#8ce0ff11);border-color:rgba(140,224,255,0.12);color:var(--accent)}
+        /* Menu Button */
+        .menu-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            position: relative;
+        }
 
-  .hero{margin:28px 0 24px;padding:28px;border-radius:14px;background:
-    linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.006));
-    border:1px solid rgba(255,255,255,0.02);display:flex;gap:18px;align-items:center;
-    box-shadow: 0 8px 30px rgba(2,6,12,0.6);
-  }
-  .hero .left{flex:1}
-  .hero h2{font-family:"Press Start 2P", "Courier New", monospace;margin:0 0 8px;font-size:20px;letter-spacing:0.6px}
-  .hero p{margin:0;color:var(--muted)}
+        .menu-button span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #333333;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
 
-  .projects{
-    display:flex;flex-direction:column;gap:18px;margin-top:18px;
-  }
-  .card{
-    display:flex;flex-direction:row;gap:18px;align-items:flex-start;
-    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-    border:1px solid var(--card-border);padding:16px;border-radius:12px;
-  }
-  .thumb{
-    width:140px;height:100px;border-radius:8px;flex:0 0 100px;
-    overflow:hidden;border:1px solid rgba(255,255,255,0.02);
-    background-size:cover;
-    background-position:center;
-  }
-  .card .meta{flex:1}
-  .card h3{margin:0 0 6px;font-family:"Press Start 2P", monospace;font-size:16px}
-  .card p{margin:0 0 12px;color:var(--muted);font-size:14px}
-  .card .links{display:flex;gap:10px;flex-wrap:wrap}
+        /* Options */
+        .menu-popup {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            width: 180px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 8px 0;
+            z-index: 1001;
+        }
 
-  .bloxd_reimagined h3{color:lime}
-  .cubyz_reworked h3{color:purple}
-  .bloxd_porter h3{color:blue}
-  .skin_persona h3{color:green}
-  .revamp h3{color:red}
-  .reworked h3{color:orange}
-  .mc_specials h3{color:hotpink}
+        .menu-popup.show {
+            display: block;
+        }
 
-  .link-btn{
-    padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);
-    background:rgba(255,255,255,0.01);font-size:13px;color:var(--muted);
-  }
+        .menu-popup a {
+            display: block;
+            padding: 10px 16px;
+            color: #333333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
 
-  footer{margin:48px 0 80px;color:var(--muted);text-align:center;font-size:13px}
+        .menu-popup a:hover {
+            background-color: #f0f0f0;
+        }
 
-@media (max-width:760px){
-  .thumb{
-    width:100%;
-    aspect-ratio: 1 / 1;
-    height:auto;
-  }
-}
-  .pixel-grid{width:100%;height:6px;background:
-    linear-gradient(90deg,#0000 0 10px, rgba(255,255,255,0.02) 10px 11px) repeat-x;
-    margin-top:10px;border-radius:2px;opacity:0.7}
-.tabs{
-  display:flex;
-  gap:10px;
-  margin-bottom:14px;
-  flex-wrap:wrap;
-}
+        /* Main Content Container */
+        .main-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
 
-.tab{
-  padding:8px 14px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:rgba(255,255,255,0.02);
-  color:var(--muted);
-  cursor:pointer;
-  font-size:13px;
-}
+        /* Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            background-color: #eaeaea;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
 
-.tab:hover{
-  background:rgba(255,255,255,0.05);
-}
+        /* Native controls are omitted to feature only resume and pause functionality */
+        video {
+            width: 100%;
+            display: block;
+        }
 
-.tab.active{
-  color:var(--accent);
-  border-color:rgba(140,224,255,0.25);
-  background:linear-gradient(90deg,#0d6efd11,#8ce0ff11);
-}
-</style>
+        /* Top Right Brand Text */
+        .brand-text {
+            margin-left: auto;
+            font-family: 'Audiowide', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #222222;
+        }
+
+        /* Action Button */
+        .projects-btn-container {
+            margin: 30px auto 15px auto;
+        }
+
+        .projects-btn {
+            font-family: var(--ui-font);
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #333333; /* Clean dark gray for pop against bright mode */
+            color: #ffffff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px; /* Highly curved capsule edges */
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .projects-btn:hover {
+            background-color: #444444;
+            transform: translateY(-1px);
+        }
+
+        /* Overview Subheading */
+        .overview-heading {
+            font-family: var(--ui-font);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #222222;
+            text-align: left;
+            margin: 25px 0 20px 0;
+        }
+
+        /* Image + Text List Layout */
+        .media-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between each row */
+            margin-top: 10px;
+        }
+
+        .media-item {
+            display: flex;
+            align-items: center; /* Vertically centers image and text together */
+            text-align: left;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .media-thumb {
+            width: 140px;      /* Fixed medium size width */
+            height: 90px;      /* Clean standard thumbnail ratio */
+            object-fit: cover; /* Prevents squishing if images are different sizes */
+            border-radius: 8px;
+            margin-right: 20px; /* Creates the requested space to the right for text */
+            background-color: #eaeaea; /* Fallback placeholder color */
+        }
+
+        .media-content {
+            flex: 1;
+        }
+
+        .media-content p {
+            font-family: var(--ui-font);
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.4;
+        }
+        
+        /* Spans full screen width across the bottom of the white body background */
+        .dark-footer {
+            width: 100%;
+            background-color: #111111; /* Clean solid deep black layout */
+            margin-top: 50px;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Constraints match the main website content column size precisely */
+        .footer-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between; /* Creates the distinct Left vs Right groups */
+            align-items: center;
+        }
+
+        /* Handles individual column positioning pairs */
+        .footer-column {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* interactive hyperlink designs */
+        .footer-link {
+            font-family: var(--ui-font);
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff; /* Brightens up on hover interaction */
+        }
+
+        /* Responsive Dimensional Structure for Different pixel ratios*/
+        @media (max-width: 600px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .footer-column {
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
+        /* Horizontal row layout for the icons above the dark footer area */
+        .icon-row-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px; /* Spaces out your three PNG icons cleanly */
+        }
+
+        .custom-icon-link {
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .custom-icon-link:hover {
+            transform: scale(1.1); /* Slight interactive zoom effect */
+        }
+
+        .custom-icon-img {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            object-fit: contain;
+        }
+
+        /* Full-screen backdrop dark overlay for the window-like popup */
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Smooth dimmed ambient background */
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        /* Window-like modal box with highly curved edges */
+        .modal-window {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            max-height: 70vh; /* Limits maximum screen space usage */
+            border-radius: 16px; /* Clean curved design styling */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Header of the popup window container */
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .modal-header h3 {
+            font-family: var(--ui-font);
+            font-size: 1.25rem;
+            color: #222222;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #888888;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            color: #333333;
+        }
+
+        /* Scrollable body space for long text layout elements */
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto; /* Vertically scrollable if contents overflow */
+            text-align: left;
+        }
+
+        .modal-body p {
+            font-family: var(--ui-font);
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-<header>
-  <div class="wrap" style="display:flex;align-items:center">
 
-    <div class="brand">
-      <div class="logo" style="background-image:url('./icons/sandbox_project.png');"></div>
-      <div>
-        <h1>Sandbox Projects</h1>
-        <p>Mods, Texture Packs and More - For MC / Cubyz / Bloxd</p>
-      </div>
+    <header class="navbar">
+        <button class="menu-button" id="menuToggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="menu-popup" id="menuPopup">
+            <a href="#about-us" id="aboutUsBtn">About Us</a>
+            <a href="privacypolicy/">Privacy Policy</a>
+        </nav>
+
+        <span class="brand-text">Feline Games</span>
+    </header>
+
+    <main class="main-container">
+        <div class="video-wrapper">
+            <video id="customVideo" preload="metadata">
+                <source src="overview.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="projects-btn-container">
+            <a href="https://felinegames.qzz.io/projects">
+                <button class="projects-btn">Go to Projects</button>
+            </a>
+        </div>
+
+        <h2 class="overview-heading">Overview</h2>
+
+        <section class="media-list">
+            
+            <div class="media-item">
+                <img src="assets/miscellaneous/overview_0.png" alt="" class="media-thumb">
+                <div class="media-content">
+                    <p>Initial Overhaul of the FelineGames Webpage, including the usage of a custom domain.</p>
+                </div>
+            </div>
+
+            <div class="media-item">
+                <img src="assets/miscellaneous/overview_1.png" alt="" class="media-thumb">
+                <div class="media-content">
+                    <p>New Game in Development utilising Unity 6 Technology, Ragdoll Physics and New Rendering Features. Aimed for Early 2027!</p>
+                </div>
+            </div>
+
+            <div class="media-item">
+                <img src="assets/miscellaneous/overview_2.png" alt="" class="media-thumb">
+                <div class="media-content">
+                    <p>Closed Beta Testing will be open soon later this year, we will be happy to announce a certain date once the game's core mechanics are finalized.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <div class="icon-row-container">
+        <a href="#link0" class="custom-icon-link">
+            <img src="assets/icons/playstore.png" alt="Icon 1" class="custom-icon-img">
+        </a>
+        <a href="#link1" class="custom-icon-link">
+            <img src="assets/icons/ms_store.png" alt="Icon 2" class="custom-icon-img">
+        </a>
+        <a href="#link2" class="custom-icon-link">
+            <img src="assets/icons/flathub.png" alt="Icon 3" class="custom-icon-img">
+        </a>
     </div>
 
-    <div class="top-links" style="margin-left:auto">
-      <div id="moreBtn" class="btn primary" style="font-size:12px;">| | |</div>
-      <div id="moreMenu" style="display:none; gap:8px;">
-        <a class="btn" href="services/">Services</a>
-        <a class="btn" href="newsletter/">Newsletter</a>
-      </div>
+    <footer class="dark-footer">
+        <div class="footer-container">
+            
+            <div class="footer-column">
+                <a href="#tos" id="tosBtn" class="footer-link">Terms of Services</a>
+                <a href="mailto:legacygamesseries@gmail.com" class="footer-link">Support</a>
+            </div>
+
+            <div class="footer-column">
+                <a href="https://discord.com/invite/k4sZkXmXG3" class="footer-link">Community</a>
+                <a href="https://t.me/felinegames" class="footer-link">Telegram</a>
+            </div>
+            
+            <div class="footer-column">
+                <a href="https://youtube.com/@FelineGamesStudio" class="footer-link">YouTube</a>
+                <a href="http://twitter.com/@FelinineGames" class="footer-link">Twitter</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3>About Us</h3>
+                <button class="modal-close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to Feline Games! We are an independent game studio dedicated to creating simple yet immersive experiences. We are Extremely passionate for what we create and it's truly wonderful!
+                We Welcome All the Visitors here as we love new guests, you can join our Community from the bottom of the page and talk to our Community of Gamers, Developers & Artists.</p>
+                <p>------------------------------------------</p>
+                <p>Tester: herobrine_994</p>
+                <p>Developer: notsummer69</p>
+            </div>
+        </div>
     </div>
 
-  </div>
-</header>
-
-<main class="wrap">
-  <section class="hero">
-    <div class="left">
-<h2></h2>
-
-<div style="margin: 0 0 14px 0;">
-  <input 
-    type="text" 
-    id="searchInput" 
-    placeholder="Search Content..." 
-    style="
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
-      color: var(--muted);
-      font-size: 14px;
-      outline: none;
-    "
-  >
-</div>
-<div class="tabs">
-  <button class="tab active" data-tab="all">All</button>
-  <button class="tab" data-tab="minecraft">Minecraft</button>
-  <button class="tab" data-tab="cubyz">Cubyz</button>
-  <button class="tab" data-tab="bloxd">Bloxd</button>
-</div>
-
-<p class="muted">  Author: NotSaino | Last Updated: 05-02-2026</p>
-      <div class="pixel-grid"></div>
+    <div class="modal-overlay" id="tosModal">
+        <div class="modal-window">
+            <div class="modal-header">
+                <h3>Terms of Service</h3>
+                <button class="modal-close-btn" id="closeTosModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>•Acceptance of Terms: By downloading or using our games, you agree to these terms.</p>
+                <p>•License: We grant you a personal, non-exclusive license to play the game for personal entertainment.</p>
+                <p>•Prohibited Conduct: You agree not to hack, modify, or attempt to cheat in the game unless given explicit permission.</p>
+                <p>•Intellectual Property: All graphics, code, and sounds are owned by NotSummer (Feline Games).</p>
+                <p>•Disclaimer of Warranties: The game is provided "as is" without warranties of any kind.</p>
+                <p>•Limitation of Liability: We are not liable for any damages resulting from your use of our apps & games.</p>
+                <p>•Caution: We may update these terms at any time.</p>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <section id="projects" class="projects">
+    <script>
+        // --- Menu Logic ---
+        const menuToggle = document.getElementById('menuToggle');
+        const menuPopup = document.getElementById('menuPopup');
 
-          <!-- Bloxd Re-imagined (Not Standalone) -->
-    <article class="card bloxd_reimagined" data-category="bloxd">
-      <div class="thumb" style="background-image:url('./icons/main/bloxd_reimagined.png');"></div>
-      <div class="meta">
-        <h3>Bloxd Re-imagined</h3>
-        <p>Meant to be a patch/fix for the Popular Bloxd Minecraft Texture Pack to optimise Performance! (nightking)</p>
-        <div class="links">
-          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Reimagined" target="_blank">Github</a>
-        </div>
-      </div>
-    </article>
-    
-        <!-- Cubyz Reworked -->
-    <article class="card cubyz_reworked" data-category="cubyz">
-      <div class="thumb" style="background-image:url('./icons/main/cubyz_reworked.png');"></div>
-      <div class="meta">
-        <h3>Cubyz Reworked</h3>
-        <p>Ports the Original Minecraft Texture Pack to Cubyz & Provides a Familiar Look & Feel!</p>
-        <div class="links">
-          <a class="link-btn" href="https://github.com/FelineGames/Cubyz-Reworked" target="_blank">Github</a>
-        </div>
-      </div>
-    </article>
-    
-      <!-- Bloxd Textures Porter -->
-    <article class="card bloxd_porter" data-category="bloxd">
-      <div class="thumb" style="background-image:url('./icons/main/conversion_engine.png');"></div>
-      <div class="meta">
-        <h3>Bloxd Texture Port</h3>
-        <p>Allows for Quick Minecraft Bedrock Files to be ported to run on Bloxd (Processing Duration depends on Hardware)</p>
-        <div class="links">
-          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Porter" target="_blank">Github Repo</a>
-        </div>
-      </div>
-    </article>
+        // Toggle menu visibility when clicking the burger button
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevents immediate closing from the document click listener
+            menuPopup.classList.toggle('show');
+        });
 
-    <!-- Skin Persona -->
-    <article class="card skin_persona" data-category="minecraft">
-      <div class="thumb" style="background-image:url('./icons/main/skin_persona.png');"></div>
-      <div class="meta">
-        <h3>Skin Persona V2.1</h3>
-        <p>Re-purposed Skin Pack for Java & Bedrock, Now Included with Christmas Version! (Original)</p>
-        <div class="links">
-  <div class="dropdown">
-    <button class="link-btn dropdown-btn">Download</button>
-    <div class="dropdown-content">
-          <a href="https://drive.google.com/file/d/1FznZxyE1pOXEWZgNGLxrTgH7bg2eX-vY/view?usp=drive_link" target="_blank">Java</a>
-          <a href="https://drive.google.com/file/d/1xRImYSjPvHr12aGWQHccN8s7AwcYGy-2/view?usp=drive_link" target="_blank">Bedrock</a>
-        </div>
-      </div>
-    </article>
+        // Close menu if clicking anywhere else on the page
+        document.addEventListener('click', () => {
+            menuPopup.classList.remove('show');
+        });
 
-    <!-- Revamp -->
-    <article class="card revamp" data-category="minecraft">
-      <div class="thumb" style="background-image:url('./icons/main/revamp.png');"></div>
-      <div class="meta">
-        <h3>Minecraft Revamp [v2.0.3]</h3>
-        <p>Vanilla Edit 16x Pack For Minecraft Bedrock Edition (Original)</p>
-        <div class="links">
-          <a class="link-btn" href="https://drive.google.com/file/d/1mPpNQYFQVIsgXVyHY2Gqxitg12Jy51ee/view?usp=drive_link" target="_blank">Learn More</a>
-          <a class="link-btn" href="https://drive.google.com/file/d/1ucySdDKv6FURApM_HH-5uu9G3cQO6WFU/view?pli=1" target="_blank">Download</a>
-          <a class="link-btn" href="https://drive.google.com/drive/folders/1KNkNlnDMWrAB21ejKd76IBIt455i4uZu?usp=drive_link" target="_blank">Archives</a>
-        </div>
-      </div>
-    </article>
-	
-	    <!-- Reworked -->
-    <article class="card reworked" data-category="minecraft">
-      <div class="thumb" style="background-image:url('./icons/main/reworked.png');"></div>
-      <div class="meta">
-        <h3>Minecraft Reworked</h3>
-        <p>Tweaked Vanilla Textures (Clean 16x edition)</p>
-        <div class="links">
-<div class="dropdown">
-  <button class="link-btn dropdown-btn">Coming Soon!</button>
-  <div class="dropdown-content">
-    <a href="" target="_blank">v1.21.10</a>
-    <a href="" target="_blank">v1.21.1</a>
-    <a href="" target="_blank">v1.20.1</a>
-    <a href="" target="_blank">v1.19.2</a>
-  </div>
-</div>
-          <a class="link-btn" href="https://drive.google.com/drive/folders/1XvQEh9IjF5jisiu4fnPMCMMzTtSuzs-6?usp=drive_link" target="_blank">Archives</a>
-        </div>
-      </div>
-    </article>
 
-    <!-- BMC Specials -->
-    <article class="card mc_specials" data-category="minecraft">
-      <div class="thumb" style="background-image:url('./icons/main/mc_specials.png');"></div>
-      <div class="meta">
-        <h3>Better Minecraft (Special Edition)</h3>
-        <p>The cursed modern look of Minecraft Bedrock Edition.</p>
-        <div class="links">
-  <div class="dropdown">
-    <button class="link-btn dropdown-btn">Download</button>
-    <div class="dropdown-content">
-          <a href="https://drive.google.com/file/d/13yhmQV_DyjfMfYATsJ5JGY86w1AlGT2d/view?usp=drive_link" target="_blank">v1.5.0</a>
-          <a href="https://drive.google.com/file/d/1OaWyYO_CqvoOE2SMnFOT-WaAmZEGcojk/view?usp=drive_link" target="_blank">v1.0.5</a>
-        </div>
-      </div>
-    </article>
+        // --- Video Logic ---
+        const video = document.getElementById('customVideo');
 
-  </section>
-</main>
+        // Simplified Video Playback System
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
 
-<footer>
-  <div class="wrap">
-    <p>FelineGames has filed bankruptcy, Services & Projects have been officially Shutdown! [Read Newsletter for MORE INFO]</p>
-  </div>
-</footer>
-<script>
-document.addEventListener("click", (e) => {
-  document.querySelectorAll(".dropdown").forEach(dd => {
-    dd.classList.toggle("show", dd.contains(e.target));
-  });
-});
 
-const searchInput = document.getElementById("searchInput");
-const cards = document.querySelectorAll(".card");
-const tabs = document.querySelectorAll(".tab");
+        // --- Modals Operations Setup Handling System ---
+        const aboutUsBtn = document.getElementById('aboutUsBtn');
+        const aboutModal = document.getElementById('aboutModal');
+        const closeModal = document.getElementById('closeModal');
 
-let activeCategory = "all";
+        const tosBtn = document.getElementById('tosBtn');
+        const tosModal = document.getElementById('tosModal');
+        const closeTosModal = document.getElementById('closeTosModal');
 
-function filterCards(){
-  const text = searchInput.value.toLowerCase();
+        // Open window popup & freeze body scroll (About Us)
+        aboutUsBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Stop native hash routing navigation loops
+            menuPopup.classList.remove('show'); // Hide navigation menu box smoothly
+            aboutModal.classList.add('open');
+            document.body.classList.add('no-scroll'); /* Freezes background scroll */
+        });
 
-  cards.forEach(card => {
-    const title = card.querySelector("h3").textContent.toLowerCase();
-    const desc = card.querySelector("p").textContent.toLowerCase();
-    const category = card.dataset.category;
+        // Open window popup & freeze body scroll (Terms of Service)
+        tosBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            tosModal.classList.add('open');
+            document.body.classList.add('no-scroll');
+        });
 
-    const matchesText = title.includes(text) || desc.includes(text);
-    const matchesTab = activeCategory === "all" || category === activeCategory;
+        // Close window popup via clicking 'X' & restore body scroll (About Us)
+        closeModal.addEventListener('click', () => {
+            aboutModal.classList.remove('open');
+            document.body.classList.remove('no-scroll'); /* Restores scroll */
+        });
 
-    card.style.display = (matchesText && matchesTab) ? "flex" : "none";
-  });
-}
+        // Close window popup via clicking 'X' & restore body scroll (Terms of Service)
+        closeTosModal.addEventListener('click', () => {
+            tosModal.classList.remove('open');
+            document.body.classList.remove('no-scroll'); /* Restores scroll */
+        });
 
-searchInput.addEventListener("input", filterCards);
-
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    activeCategory = tab.dataset.tab;
-    filterCards();
-  });
-});
-
-const moreBtn = document.getElementById("moreBtn");
-const moreMenu = document.getElementById("moreMenu");
-
-moreBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  moreMenu.style.display = moreMenu.style.display === "flex" ? "none" : "flex";
-});
-
-document.addEventListener("click", () => {
-  moreMenu.style.display = "none";
-});
-</script>
+        // Close window popup seamlessly if clicking outside the window box border
+        window.addEventListener('click', (e) => {
+            if (e.target === aboutModal) {
+                aboutModal.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            }
+            if (e.target === tosModal) {
+                tosModal.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    </script>
 
 </body>
 </html>
