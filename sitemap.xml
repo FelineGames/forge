@@ -3,35 +3,35 @@
   <!-- Homepage -->
   <url>
     <loc>https://felinegames.qzz.io/</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- Services -->
   <url>
     <loc>https://felinegames.qzz.io/services</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <!-- Projects -->
   <url>
     <loc>https://felinegames.qzz.io/projects</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <!-- Newsletter -->
   <url>
     <loc>https://felinegames.qzz.io/newsletter</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <!-- Privacy Policy -->
   <url>
-    <loc>https://felinegames.qzz.io/privacypolicy</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://felinegames.qzz.io/policy/</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

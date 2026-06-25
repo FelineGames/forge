@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Policies</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* White background as requested */
+            color: #333;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background-color: #121212; /* Black navigation */
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-button {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Search Bar */
+        .search-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            background-color: #2a2a2a; /* Slightly lighter black so it stands out */
+            border: 1px solid #555; /* Rectangular border */
+            border-radius: 4px; /* Slight rounding, keeps rectangular look */
+            padding: 8px 12px;
+        }
+
+        .search-icon {
+            color: #aaaaaa;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .search-container input {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 16px;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-container input::placeholder {
+            color: #aaaaaa;
+        }
+
+        /* Main Content Container */
+        .content {
+            padding: 25px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Clickable Cards */
+        .card {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0; /* Border to separate from white background */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-bottom: 15px;
+            text-decoration: none; /* Removes link underline */
+            color: inherit;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* 1:1 Aspect Ratio Image */
+        .card-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 15px;
+            flex-shrink: 0; /* Prevents image from shrinking */
+            background-color: #f0f0f0; /* Fallback color */
+        }
+
+        .card-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-nav">
+        <a href="https://felinegames.qzz.io/" class="back-button" title="Go Back">&#8592;</a>
+        
+        <div class="search-container">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" id="searchInput" placeholder="Browse Policies">
+        </div>
+    </header>
+
+    <main class="content">
+        
+        <a href="https://felinegames.qzz.io/policy/wrapface" class="card">
+            <img src="../assets/icons/wrapface.png" alt="Icon" class="card-img">
+            <div class="card-text">
+                <h3 class="card-title">Wrapface (2026)</h3>
+                <p class="card-desc">Privacy Policy of the Game, Developed by MiniGS.</p>
+            </div>
+        </a>
+
+        <a href="https://felinegames.qzz.io/policy/murkmask" class="card">
+            <img src="../assets/icons/murkmask.png" alt="Icon" class="card-img">
+            <div class="card-text">
+                <h3 class="card-title">Murkmask (2027)</h3>
+                <p class="card-desc">Explains how your data is used within the game. Developed by Feline Games</p>
+            </div>
+        </a>
+
+    </main>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+
+                // If the title or description matches the search text, show the card. Otherwise hide it.
+                if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
