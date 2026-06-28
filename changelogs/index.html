@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelogs</title>
+    <link rel="canonical" href="https://felinegames.qzz.io/changelogs" />
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0b0202;
+            color: #cccccc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .navBar {
+            background-color: #3a0000;
+            border: 2px solid #800000;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        .navBar a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .navBar-active {
+            color: #ff3333;
+            background-color: #1a0000;
+            border: 1px solid #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+        .navBar-inactive {
+            color: #999999;
+        }
+        .navBar-inactive:hover {
+            color: #ffffff;
+            background-color: #4a0000;
+        }
+        .background {
+            background-color: #000000;
+            border-radius: 12px;
+            padding: 25px 20px;
+            width: 100%;
+            max-width: 500px;
+            outline: #990000 solid 3px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+            text-align: left;
+        }
+        
+        /* Dropdown/Accordion Custom Styles */
+        details {
+            background-color: #110202;
+            border: 1px solid #440000;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        details[open] {
+            border-color: #cc0000;
+            box-shadow: 0 0 8px rgba(204, 0, 0, 0.4);
+        }
+        summary {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 15px;
+            cursor: pointer;
+            outline: none;
+            list-style: none;
+            position: relative;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+        summary:hover {
+            background-color: #220505;
+        }
+        /* Custom dropdown arrow marker indicator */
+        summary::after {
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #880000;
+            transition: transform 0.3s, color 0.3s;
+        }
+        details[open] summary::after {
+            transform: translateY(-50%) rotate(-180deg);
+            color: #ff3333;
+        }
+        summary::-webkit-details-marker {
+            display: none; /* Hide default browser arrow */
+        }
+        .dropdown-content {
+            padding: 15px;
+            background-color: #050101;
+            border-top: 1px solid #330000;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-top: 5px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #440000;
+            padding-bottom: 4px;
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+            margin-bottom: 5px;
+        }
+        li {
+            font-size: 14px;
+            color: #aaaaaa;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .red-text { color: #cc0000; text-shadow: 0 0 4px #550000; }
+        .gren-text { color: #aa2222; }
+    </style>
+</head>
+<body>
+
+    <div class="navBar">
+        <a class="navBar-inactive" href="https://felinegames.qzz.io/download">Download</a>
+        <a class="navBar-inactive" href="https://felinegames.qzz.io/credits">Credits</a>
+        <a class="navBar-active" href="#">Changelogs</a>
+    </div>
+
+    <div class="background">
+        
+        <!-- Murkmask Dropdown -->
+        <details>
+            <summary class="red-text">Murkmask Updates</summary>
+            <div class="dropdown-content">
+                <h2 class="gren-text">Latest Version </h2>
+                <ul>
+                    <li>initial release</li>
+                    <li>Supports Windows 10+ & Upto Android 16</li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- Murkmask Revelations Dropdown -->
+        <details>
+            <summary class="red-text">Murkmask: Revelations Updates</summary>
+            <div class="dropdown-content">
+                <h2 class="gren-text">Latest Version </h2>
+                <ul>
+                    <li>initial release</li>
+                    <li>Supports Windows 10+ & Upto Android 16</li>
+                    <li>What-if Crossover across 3 Different Universe</li>
+                </ul>
+            </div>
+        </details>
+
+    </div>
+
+</body>
+</html>
