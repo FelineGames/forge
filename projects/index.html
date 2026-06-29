@@ -37,6 +37,28 @@
   a{color:var(--accent);text-decoration:none}
   img{max-width:100%;display:block}
 
+  /* Back Button - Positioned absolutely so it doesn't break any flexbox layouts */
+  .back-btn {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    color: var(--muted);
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-btn:hover {
+    color: var(--accent);
+  }
+  .back-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
   header{padding:28px 16px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03)}
   .wrap{max-width:1100px;margin:32px auto;padding:0 18px}
   .brand{display:flex;gap:14px;align-items:center}
@@ -174,13 +196,21 @@
 </style>
 </head>
 <body>
+
+<a href="https://felinegames.github.io/forge" class="back-btn">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+  </svg>
+  Back to Forge
+</a>
+
 <header>
   <div class="wrap" style="display:flex;align-items:center">
 
     <div class="brand">
       <div class="logo" style="background-image:url('./icons/sandbox_project.png');"></div>
       <div>
-        <h1>Voxel Projects</h1>
+        <h1>Projects</h1>
         <p>Everything you need in one place!</p>
       </div>
     </div>
@@ -225,7 +255,7 @@
   <button class="tab" data-tab="bloxd">Bloxd</button>
 </div>
 
-<p class="muted"> Last Updated: 21-05-2026</p>
+<p class="muted"> Last Updated: 30-06-2026</p>
       <div class="pixel-grid"></div>
     </div>
   </section>
@@ -283,7 +313,7 @@
         <h3>Bloxd Re-imagined</h3>
         <p>Meant to be a patch/fix for the Popular Bloxd Minecraft Texture Pack to optimise Performance! (nightking)</p>
         <div class="links">
-          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Reimagined" target="_blank">Github</a>
+          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Reimagined" target="_blank">Repository</a>
         </div>
       </div>
     </article>
@@ -294,7 +324,7 @@
         <h3>Cubyz Reworked</h3>
         <p>Ports the Original Minecraft Texture Pack to Cubyz & Provides a Familiar Look & Feel!</p>
         <div class="links">
-          <a class="link-btn" href="https://github.com/FelineGames/Cubyz-Reworked" target="_blank">Github</a>
+          <a class="link-btn" href="https://github.com/FelineGames/Cubyz-Reworked" target="_blank">Repository</a>
         </div>
       </div>
     </article>
@@ -305,7 +335,7 @@
         <h3>Bloxd Texture Port</h3>
         <p>Allows for Quick Minecraft Bedrock Files to be ported to run on Bloxd (Processing Duration depends on Hardware)</p>
         <div class="links">
-          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Porter" target="_blank">Github Repo</a>
+          <a class="link-btn" href="https://github.com/FelineGames/Bloxd-Porter" target="_blank">Repository</a>
         </div>
       </div>
     </article>

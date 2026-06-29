@@ -48,6 +48,42 @@
             overflow: hidden;
         }
 
+        /* NEW CODE: Full-screen Intro Video Overlay */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh; /* Fallback for older browsers */
+            height: 100dvh; /* Prevents clunky resizing when mobile URL bar hides/shows */
+            background-color: #000000;
+            z-index: 9999; /* Sits above absolutely everything else */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .intro-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.05); /* Slight zoom-out effect during transition */
+        }
+
+        .intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Makes the video fill the entire screen on desktop/landscape */
+            object-position: center; /* Keeps the focal point centered */
+        }
+
+        /* Specifically adapts the 16:9 video for portrait screens (Mobile) */
+        @media (orientation: portrait) {
+            .intro-video {
+                object-fit: contain; /* Shows the full video width without extreme cropping */
+            }
+        }
+
         /* Navigation Bar*/
         .navbar {
             position: fixed;
@@ -123,23 +159,6 @@
             max-width: 800px;
             padding: 20px;
             text-align: center;
-        }
-
-        /* Video Wrapper */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            background-color: #eaeaea;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-        }
-
-        /* Native controls are omitted to feature only resume and pause functionality */
-        video {
-            width: 100%;
-            display: block;
         }
 
         /* Top Right Brand Text */
@@ -392,7 +411,12 @@
         }
     </style>
 </head>
-<body>
+<body class="no-scroll"> <div class="intro-overlay" id="introOverlay">
+        <video class="intro-video" id="introVideo" preload="auto" playsinline>
+            <source src="assets/miscellaneous/overview.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
     <header class="navbar">
         <button class="menu-button" id="menuToggle" aria-label="Toggle Menu">
@@ -411,28 +435,20 @@
 
         <span class="brand-text">Feline Games</span>
     </header>
-
+        
     <main class="main-container">
-        <div class="video-wrapper">
-            <video id="customVideo" preload="metadata">
-                <source src="assets/miscellaneous/overview.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-
         <div class="projects-btn-container">
             <a href="https://felinegames.qzz.io/projects">
                 <button class="projects-btn">Go to Projects</button>
             </a>
         </div>
 
-        <h2 class="overview-heading">Overview</h2>
-        <p class="rights-holder">Copyright © 2026 FelineGames</p>
+        <h2 class="overview-heading">News</h2>
 
         <section class="media-list">
             
             <div class="media-item">
-                <img src="assets/miscellaneous/overview_1.png" alt="" class="media-thumb">
+                <img src="assets/icons/murkmask.png" alt="" class="media-thumb">
                 <div class="media-content">
                     <p>Murkmask has entered early production, a Horror Escape game for Android & Windows. Planned to Release in Early 2027</p>
                 </div>
@@ -459,6 +475,9 @@
             <img src="assets/icons/flathub.png" alt="Icon 3" class="custom-icon-img">
         </a>
     </div>
+    ‎ 
+    ‎ 
+    <p class="rights-holder">‎‎Copyright © 2026 FelineGames</p>
 
     <footer class="dark-footer">
         <div class="footer-container">
@@ -516,6 +535,31 @@
     </div>
 
     <script>
+        // Intro Screen Lifecycle Logic ---
+        const introOverlay = document.getElementById('introOverlay');
+        const introVideo = document.getElementById('introVideo');
+
+        // Automatically trigger play attempts as soon as script runs
+        window.addEventListener('DOMContentLoaded', () => {
+            introVideo.play().catch(error => {
+                console.log("Autoplay with audio blocked. Activating fallback muted playback...");
+                introVideo.muted = true;
+                introVideo.play();
+            });
+        });
+
+        // Detect when video hits completion, trigger fade transitions, restore site scrolling
+        introVideo.addEventListener('ended', () => {
+            introOverlay.classList.add('fade-out');
+            document.body.classList.remove('no-scroll');
+            
+            // dynamic node extraction to keep background overhead minimal
+            setTimeout(() => {
+                introOverlay.remove();
+            }, 800);
+        });
+
+
         // --- Menu Logic ---
         const menuToggle = document.getElementById('menuToggle');
         const menuPopup = document.getElementById('menuPopup');
@@ -529,19 +573,6 @@
         // Close menu if clicking anywhere else on the page
         document.addEventListener('click', () => {
             menuPopup.classList.remove('show');
-        });
-
-
-        // --- Video Logic ---
-        const video = document.getElementById('customVideo');
-
-        // Simplified Video Playback System
-        video.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-            } else {
-                video.pause();
-            }
         });
 
 
@@ -559,13 +590,6 @@
             e.preventDefault(); // Stop native hash routing navigation loops
             menuPopup.classList.remove('show'); // Hide navigation menu box smoothly
             aboutModal.classList.add('open');
-            document.body.classList.add('no-scroll'); /* Freezes background scroll */
-        });
-
-        // Open window popup & freeze body scroll (Terms of Service)
-        tosBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            tosModal.classList.add('open');
             document.body.classList.add('no-scroll');
         });
 
