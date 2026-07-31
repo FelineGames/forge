@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    
+<html lang="en">
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Feline Games</title>
@@ -14,17 +14,17 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
 
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://felinegames.qzz.io/",
-  "name": "Feline Games",
-  "alternateName": "FelineGames"
-}
-</script>
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://felinegames.qzz.io/",
+      "name": "Feline Games",
+      "alternateName": "FelineGames"
+    }
+    </script>
 
     <style>
         :root {
@@ -58,7 +58,7 @@
             overflow: hidden;
         }
 
-        /* Navigation Bar*/
+        /* Navigation Bar - Fixed to always appear when scrolled */
         .navbar {
             position: fixed;
             top: 0;
@@ -77,6 +77,8 @@
         .menu-button {
             background: none;
             border: none;
+            outline: none;
+            padding: 0;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -153,11 +155,11 @@
             font-family: var(--ui-font);
             font-size: 1rem;
             font-weight: 600;
-            background-color: #333333; /* Clean dark gray for pop against bright mode */
+            background-color: #333333;
             color: #ffffff;
             border: none;
             padding: 12px 28px;
-            border-radius: 50px; /* Highly curved capsule edges */
+            border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s, background-color 0.2s;
@@ -184,50 +186,72 @@
             text-align: left;
             margin-bottom: 25px;
             font-weight: 500;
-        /* Image + Text List Layout */
         }
         
+        /* Other Pages - Compact Image + Text + Button Layout */
         .media-list {
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Space between each row */
+            gap: 12px; /* Tighter gap for smaller items */
             margin-top: 10px;
         }
 
         .media-item {
             display: flex;
-            align-items: center; /* Vertically centers image and text together */
+            align-items: center;
+            justify-content: space-between;
             text-align: left;
             background-color: #ffffff;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 10px 15px; /* Reduced padding */
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
         }
 
         .media-thumb {
-            width: 140px;      /* Fixed medium size width */
-            height: 90px;      /* Clean standard thumbnail ratio */
-            object-fit: cover; /* Prevents squishing if images are different sizes */
-            border-radius: 8px;
-            margin-right: 20px; /* Creates the requested space to the right for text */
-            background-color: #eaeaea; /* Fallback placeholder color */
+            width: 50px;       /* Made image small */
+            height: 50px;      /* Made image small */
+            object-fit: cover;
+            border-radius: 6px;
+            background-color: #eaeaea;
+            flex-shrink: 0;
         }
 
         .media-content {
             flex: 1;
+            padding: 0 15px; /* Space between image, text, and button */
         }
 
         .media-content p {
             font-family: var(--ui-font);
-            font-size: 0.95rem;
+            font-size: 0.9rem; /* Slightly smaller text to fit the small row */
             color: #555555;
             line-height: 1.4;
+            margin: 0;
+        }
+
+        .media-link-btn {
+            font-family: var(--ui-font);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background-color: #333333;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px; /* Smaller button footprint */
+            border-radius: 6px;
+            text-align: center;
+            transition: background-color 0.2s, transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .media-link-btn:hover {
+            background-color: #444444;
+            transform: translateY(-1px);
         }
         
         /* Spans full screen width across the bottom of the white body background */
         .dark-footer {
             width: 100%;
-            background-color: #111111; /* Clean solid deep black layout */
+            background-color: #111111;
             margin-top: 50px;
             padding: 40px 0;
             display: flex;
@@ -240,7 +264,7 @@
             max-width: 800px;
             padding: 0 20px;
             display: flex;
-            justify-content: space-between; /* Creates the distinct Left vs Right groups */
+            justify-content: space-between; 
             align-items: center;
         }
 
@@ -261,11 +285,29 @@
         }
 
         .footer-link:hover {
-            color: #ffffff; /* Brightens up on hover interaction */
+            color: #ffffff;
         }
 
         /* Responsive Dimensional Structure for Different pixel ratios*/
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
+            .media-item {
+                flex-direction: row; /* Force horizontal alignment even on mobile for compact list */
+                padding: 10px;
+            }
+            .media-thumb {
+                width: 40px;
+                height: 40px;
+            }
+            .media-content {
+                padding: 0 10px;
+            }
+            .media-content p {
+                font-size: 0.85rem;
+            }
+            .media-link-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
             .footer-container {
                 flex-direction: column;
                 gap: 20px;
@@ -285,7 +327,7 @@
             padding: 0 20px;
             display: flex;
             justify-content: center;
-            gap: 25px; /* Spaces out your three PNG icons cleanly */
+            gap: 25px;
         }
 
         .custom-icon-link {
@@ -294,7 +336,7 @@
         }
 
         .custom-icon-link:hover {
-            transform: scale(1.1); /* Slight interactive zoom effect */
+            transform: scale(1.1);
         }
 
         .custom-icon-img {
@@ -305,13 +347,13 @@
 
         /* Full-screen backdrop dark overlay for the window-like popup */
         .modal-overlay {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Smooth dimmed ambient background */
+            background-color: rgba(0, 0, 0, 0.4);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -327,8 +369,8 @@
             background-color: #ffffff;
             width: 100%;
             max-width: 500px;
-            max-height: 70vh; /* Limits maximum screen space usage */
-            border-radius: 16px; /* Clean curved design styling */
+            max-height: 70vh;
+            border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
@@ -373,7 +415,7 @@
         /* Scrollable body space for long text layout elements */
         .modal-body {
             padding: 24px;
-            overflow-y: auto; /* Vertically scrollable if contents overflow */
+            overflow-y: auto;
             text-align: left;
         }
 
@@ -395,9 +437,7 @@
         </button>
         
         <nav class="menu-popup" id="menuPopup">
-            <a href="https://felinegames.qzz.io/download">Downloads</a>
-            <a href="https://felinegames.qzz.io/changelogs">Changelogs</a>
-            <a href="https://felinegames.qzz.io/credits">Credits</a>
+            <a href="https://felinegames.qzz.io/projects">Archives</a>
             <a href="https://felinegames.qzz.io/policy">Privacy Policy</a>
             <a href="#about-us" id="aboutUsBtn">About Us</a>
         </nav>
@@ -407,27 +447,49 @@
         
     <main class="main-container">
         <div class="projects-btn-container">
-            <a href="https://felinegames.qzz.io/projects">
-                <button class="projects-btn">Go to Projects</button>
+            <a href="https://github.com/felinegames">
+                <button class="projects-btn">Projects</button>
             </a>
         </div>
 
-        <h2 class="overview-heading">News</h2>
+        <h2 class="overview-heading">Other Pages</h2>
 
         <section class="media-list">
             
+            <!-- Compact Item 1 -->
             <div class="media-item">
-                <img src="assets/icons/murkmask.png" alt="" class="media-thumb" />
+                <img src="assets/miscellaneous/downloads.png" alt="Page Icon" class="media-thumb" />
                 <div class="media-content">
-                    <p>Murkmask has entered early production, a Horror Escape game for Android &amp; Windows. Planned to Release in Early 2027</p>
+                    <p>Download Our Upcoming 2027 Flagship Titles</p>
                 </div>
+                <a href="download/" class="media-link-btn">Go</a>
             </div>
 
+            <!-- Compact Item 2 -->
             <div class="media-item">
-                <img src="assets/miscellaneous/overview_0.png" alt="" class="media-thumb" />
+                <img src="assets/miscellaneous/overview_0.png" alt="Page Icon" class="media-thumb" />
                 <div class="media-content">
-                    <p>Developer - NotSummer has changed identity after staggering 5 years to &quot;Kelsa&quot;</p>
+                    <p>Read about developer updates and announcements.</p>
                 </div>
+                <a href="https://github.com/FelineGames/forge/discussions/1" class="media-link-btn">Go</a>
+            </div>
+            
+                        <!-- Compact Item 3 -->
+            <div class="media-item">
+                <img src="assets/miscellaneous/updates.png" alt="Page Icon" class="media-thumb" />
+                <div class="media-content">
+                    <p>Read Changelogs for Murkmask Games.</p>
+                </div>
+                <a href="changelogs/" class="media-link-btn">Go</a>
+            </div>
+            
+                        <!-- Compact Item 4 -->
+            <div class="media-item">
+                <img src="assets/miscellaneous/credits.png" alt="Page Icon" class="media-thumb" />
+                <div class="media-content">
+                    <p>View Credits.</p>
+                </div>
+                <a href="credits/" class="media-link-btn">Go</a>
             </div>
 
         </section>
@@ -438,7 +500,7 @@
             <img src="assets/icons/playstore.png" alt="Icon 1" class="custom-icon-img" />
         </a>
         <a href="" class="custom-icon-link">
-            <img src="assets/icons/ms_store.png" alt="Icon 2" class="custom-icon-img" />
+            <img src="assets/icons/ms_store.svg" alt="Icon 2" class="custom-icon-img" />
         </a>
         <a href="" class="custom-icon-link">
             <img src="assets/icons/flathub.png" alt="Icon 3" class="custom-icon-img" />
@@ -452,12 +514,12 @@
         <div class="footer-container">
             
             <div class="footer-column">
-                <a href="https://felinegames.qzz.io/policy/terms" class="footer-link" id="tosBtn">Terms of Services</a>
-                <a href="mailto:legacygamesseries@gmail.com" class="footer-link">Support</a>
+                <a href="#terms-of-service" class="footer-link" id="tosBtn">Terms</a>
+                <a href="mailto:felinegames.uk@gmail.com" class="footer-link">Support</a>
             </div>
 
             <div class="footer-column">
-                <a href="https://discord.com/invite/k4sZkXmXG3" class="footer-link">Community</a>
+                <a href="https://discord.com/invite/k4sZkXmXG3" class="footer-link">Discord</a>
                 <a href="https://t.me/felinegames" class="footer-link">Telegram</a>
             </div>
             
@@ -537,16 +599,26 @@
             document.body.classList.add('no-scroll');
         });
 
+        // Open window popup & freeze body scroll (Terms of Service)
+        if(tosBtn){
+            tosBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop native hash routing navigation loops
+                tosModal.classList.add('open');
+                document.body.classList.add('no-scroll');
+            });
+        }
+
+
         // Close window popup via clicking 'X' & restore body scroll (About Us)
         closeModal.addEventListener('click', () => {
             aboutModal.classList.remove('open');
-            document.body.classList.remove('no-scroll'); /* Restores scroll */
+            document.body.classList.remove('no-scroll'); 
         });
 
         // Close window popup via clicking 'X' & restore body scroll (Terms of Service)
         closeTosModal.addEventListener('click', () => {
             tosModal.classList.remove('open');
-            document.body.classList.remove('no-scroll'); /* Restores scroll */
+            document.body.classList.remove('no-scroll'); 
         });
 
         // Close window popup seamlessly if clicking outside the window box border
