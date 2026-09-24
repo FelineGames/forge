@@ -29,20 +29,6 @@
       "alternateName": "FelineGames"
     }
     </script>
-    
-    <style>
-        /* Patch to force horizontal alignment for the Go buttons on all screen sizes */
-        @media (max-width: 650px) {
-            .media-item {
-                flex-direction: row !important;
-                align-items: center !important;
-                padding: 10px 15px !important;
-            }
-        }
-        .media-item {
-            flex-direction: row !important;
-        }
-    </style>
 </head>
 <body>
 
@@ -54,9 +40,11 @@
         </button>
         
         <nav class="menu-popup" id="menuPopup">
+            <a href="../downloads/">Downloads</a>
+            <a href="../credits/">Credits</a>
+            <a href="../changelogs/">Changelogs</a>
             <a href="../archives/">Archives</a>
-            <a href="../policy/">Privacy Policy</a>
-            <a href="#about-us" id="aboutUsBtn">About Us</a>
+            <a href="#about-us" id="aboutUsBtn">About</a>
         </nav>
 
         <span class="brand-text">Feline Games</span>
@@ -126,14 +114,10 @@
     ‎ 
     ‎ 
     <p class="rights-holder">‎‎Copyright © 2026 FelineGames</p>
+    <p class="rights-holder">‎‎FelineGames™, All rights reserved.</p>
 
     <footer class="dark-footer">
         <div class="footer-container">
-            
-            <div class="footer-column">
-                <a href="#terms-of-service" class="footer-link" id="tosBtn">Terms</a>
-                <a href="mailto:felinegames.uk@gmail.com" class="footer-link">Support</a>
-            </div>
 
             <div class="footer-column">
                 <a href="https://discord.com/invite/k4sZkXmXG3" class="footer-link">Discord</a>
@@ -144,40 +128,49 @@
                 <a href="https://youtube.com/@FeIineGames" class="footer-link">YouTube</a>
                 <a href="https://twitter.com/@FelinineGames" class="footer-link">Twitter</a>
             </div>
+            
+            <div class="footer-column">
+                <a href="https://whatsapp.com/channel/0029VbAxfvVHFxOxv7gISt2U" class="footer-link" id="tosBtn">WhatsApp</a>
+                <a href="https://github.com/felinegamestudio" class="footer-link">Organisation</a>
+            </div>
 
         </div>
     </footer>
 
     <div class="modal-overlay" id="aboutModal">
-        <div class="modal-window">
+        <div class="modal-window about-modal-window">
             <div class="modal-header">
                 <h3>About Us</h3>
                 <button class="modal-close-btn" id="closeModal">×</button>
             </div>
-            <div class="modal-body">
-                <p>Welcome to the Official Website of Feline Games - An Independent Studio Owned by Kelsa. They&#39;re currently busy developing an upcoming Horror Escape game planned for Release in 2027. For Inquiries, <a href="mailto:legacygamesseries@gmail.com" target="_blank" class="contact-email">Email Me</a></p>
-                <p>‎ 
-                </p><p>Murkmask: Scary Horror Coming soon to Android/Windows/Linux!
-            </p></div>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="tosModal">
-        <div class="modal-window">
-            <div class="modal-header">
-                <h3>Terms of Service</h3>
-                <button class="modal-close-btn" id="closeTosModal">×</button>
-            </div>
-            <div class="modal-body">
-                <p>• Acceptance of Terms: By downloading or playing our games, you agree to the terms below.</p>
-                <p>• License: We grant you a personal, non-commercial license to play the game for entertainment purposes.</p>
-                <p>• Prohibited Conduct: You agree not to modify, infringe copyrights or attempt to cheat in the game unless given explicit permission.</p>
-                <p>• Intellectual Property: All music, art style, code and visuals are owned by NotSummer (Feline Games).</p>
-                <p>• Disclaimer of Warranties: The game is provided &quot;as is&quot; without any warranties.</p>
-                <p>• Limitation of Liability: We are not liable for any damages occured from your use of our apps &amp; games.</p>
-                <p>• Caution: We reserve the right to update these terms at any time.</p>
-                <p>‎ </p>
-                <p><a href="../policy/terms/" target="_blank" class="policy-link">View Full Site</a></p>
+            <div class="modal-body-layout">
+                <div class="modal-sidebar">
+                    <button class="tab-btn active" data-tab="description">Description</button>
+                    <button class="tab-btn" data-tab="legal">Legal</button>
+                    <button class="tab-btn" data-tab="info">ⓘ Info</button>
+                </div>
+                <div class="modal-sidebar-content" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                    <div class="modal-tab-content active" id="description-tab">
+                        <p>Welcome to the Official Website of Feline Games - An Independent Studio Owned by Kelsa. </p>
+                        <p>Murkmask - Horror Escape Currently in Development & Coming Soon to Android/Windows/Linux!</p>
+                    </div>
+                    <div class="modal-tab-content" id="legal-tab">
+                        <div class="legal-buttons">
+                            <a href="../policy/" class="legal-btn">Privacy Policy</a>
+                            <a href="../policy/terms/" class="legal-btn">Terms of Services</a>
+                            <a href="mailto:felinegames.uk@gmail.com" class="legal-btn">Contact Developer</a>
+                        </div>
+                    </div>
+                    <div class="modal-tab-content" id="info-tab">
+                        <p>Feline Games is an indie developer dedicated in working with Story Based Horror narratives. Founded in 2024 by notsummer69</p>
+                        <p class="socials-title">Storefronts</p>
+                        <div class="socials-icons-row">
+                            <img src="../assets/icons/gamejolt.svg" alt="Social 1">
+                            <img src="../assets/icons/itch.io.svg" alt="Social 2">
+                            <img src="../assets/icons/gog.svg" alt="Social 3">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -187,17 +180,29 @@
         const menuToggle = document.getElementById('menuToggle');
         const menuPopup = document.getElementById('menuPopup');
 
-        // Toggle menu visibility when clicking the burger button
         menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevents immediate closing from the document click listener
+            e.stopPropagation();
             menuPopup.classList.toggle('show');
         });
 
-        // Close menu if clicking anywhere else on the page
         document.addEventListener('click', () => {
             menuPopup.classList.remove('show');
         });
 
+        // --- About Us Tabs Logic ---
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.modal-tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-tab') + '-tab';
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
 
         // --- Modals Operations Setup Handling System ---
         const aboutUsBtn = document.getElementById('aboutUsBtn');
@@ -208,37 +213,31 @@
         const tosModal = document.getElementById('tosModal');
         const closeTosModal = document.getElementById('closeTosModal');
 
-        // Open window popup & freeze body scroll (About Us)
         aboutUsBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Stop native hash routing navigation loops
-            menuPopup.classList.remove('show'); // Hide navigation menu box smoothly
+            e.preventDefault();
+            menuPopup.classList.remove('show');
             aboutModal.classList.add('open');
             document.body.classList.add('no-scroll');
         });
 
-        // Open window popup & freeze body scroll (Terms of Service)
         if(tosBtn){
             tosBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Stop native hash routing navigation loops
+                e.preventDefault();
                 tosModal.classList.add('open');
                 document.body.classList.add('no-scroll');
             });
         }
 
-
-        // Close window popup via clicking 'X' & restore body scroll (About Us)
         closeModal.addEventListener('click', () => {
             aboutModal.classList.remove('open');
             document.body.classList.remove('no-scroll'); 
         });
 
-        // Close window popup via clicking 'X' & restore body scroll (Terms of Service)
         closeTosModal.addEventListener('click', () => {
             tosModal.classList.remove('open');
             document.body.classList.remove('no-scroll'); 
         });
 
-        // Close window popup seamlessly if clicking outside the window box border
         window.addEventListener('click', (e) => {
             if (e.target === aboutModal) {
                 aboutModal.classList.remove('open');
