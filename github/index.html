@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feline Games (Confirm to Proceed)</title>
+    <meta name="description" content="Confirm Command, Deny to go back to main page.">
+    <style>
+        body {
+            font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 0px #fff;
+            text-align: center; /* Centres the text when wrapping on smaller screens */
+            max-width: 600px;  /* Keeps the text structure clean */
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* 2010 Era Glossy Button Base Styling */
+        .btn {
+            font-family: inherit;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none; /* Removes underline from links */
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4);
+            box-shadow: 
+                inset 0px 1px 0px rgba(255, 255, 255, 0.5), /* Top inner highlight */
+                0px 3px 5px rgba(0, 0, 0, 0.3);             /* Drop shadow */
+            transition: transform 0.1s ease;
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+            box-shadow: 
+                inset 0px 2px 4px rgba(0, 0, 0, 0.4),
+                0px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Glossy Green (Yes) */
+        .btn-yes {
+            border: 1px solid #2d6313;
+            background: linear-gradient(
+                to bottom, 
+                #7cd055 0%, 
+                #50b22a 50%, 
+                #379612 51%, 
+                #297909 100%
+            );
+        }
+
+        .btn-yes:hover {
+            background: linear-gradient(
+                to bottom, 
+                #8ce264 0%, 
+                #5ec537 50%, 
+                #41aa17 51%, 
+                #318f0d 100%
+            );
+        }
+
+        /* Glossy Red (No) */
+        .btn-no {
+            border: 1px solid #7c1313;
+            background: linear-gradient(
+                to bottom, 
+                #f05d5d 0%, 
+                #d12c2c 50%, 
+                #b21111 51%, 
+                #8e0707 100%
+            );
+        }
+
+        .btn-no:hover {
+            background: linear-gradient(
+                to bottom, 
+                #f77474 0%, 
+                #e33f3f 50%, 
+                #c71818 51%, 
+                #a80c0c 100%
+            );
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Are you sure you want to proceed?</h1>
+
+    <div class="button-container">
+        <a href="https://github.com/felinegamestudio" class="btn btn-yes">Yes</a>
+        <a href="https://felinegames.github.io/forge/" class="btn btn-no">No</a>
+    </div>
+
+</body>
+</html>
