@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="../../css/styles.css" />
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/stylesheet.css" />
+    <script src="../../javascript/home.js" defer></script>
+    <script src="../../javascript/menu.js" defer></script>
+    <script src="../../javascript/search.js" defer></script>
 </head>
 <body>
 
@@ -84,50 +87,5 @@
         </div>
     </footer>
 
-    <div class="modal-overlay" id="tosModal">
-        <div class="modal-window">
-            <div class="modal-header">
-                <h3>Terms of Service</h3>
-                <button class="modal-close-btn" id="closeTosModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>• Acceptance of Terms: By downloading or playing our games, you agree to the terms below.</p>
-                <p>• License: We grant you a personal, non-commercial license to play the game for entertainment purposes.</p>
-                <p>• Prohibited Conduct: You agree not to modify, infringe copyrights or attempt to cheat in the game unless given explicit permission.</p>
-                <p>• Intellectual Property: All music, art style, code and visuals are owned by NotSummer (Feline Games).</p>
-                <p>• Disclaimer of Warranties: The game is provided "as is" without any warranties.</p>
-                <p>• Limitation of Liability: We are not liable for any damages occured from your use of our apps & games.</p>
-                <p>• Caution: We reserve the right to update these terms at any time.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const tosBtn = document.getElementById('tosBtn');
-        const tosModal = document.getElementById('tosModal');
-        const closeTosModal = document.getElementById('closeTosModal');
-
-        if (tosBtn && tosModal) {
-            tosBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                tosModal.classList.add('open');
-                document.body.classList.add('no-scroll');
-            });
-        }
-
-        if (closeTosModal) {
-            closeTosModal.addEventListener('click', () => {
-                tosModal.classList.remove('open');
-                document.body.classList.remove('no-scroll');
-            });
-        }
-
-        window.addEventListener('click', (e) => {
-            if (e.target === tosModal) {
-                tosModal.classList.remove('open');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-    </script>
 </body>
 </html>

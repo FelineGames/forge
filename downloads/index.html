@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesheet.css" />
+    <script src="../javascript/menu.js" defer></script>
+    <script src="../javascript/home.js" defer></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
@@ -19,19 +21,20 @@
 </head>
 <body>
 
-    <header class="navbar">
+        <header class="navbar">
+        <img src="../assets/icons/brands/felinegames.png" alt="Feline Games" class="brand-text">
         <button class="menu-button" id="menuToggle" aria-label="Toggle Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
+            <!--- navigator --->
         <nav class="menu-popup" id="menuPopup">
             <a href="../home/">Home</a>
-            <a href="../policy/">Privacy Policy</a>
+            <a href="../policy/">Policy</a>
             <a href="../archives/">Archives</a>
         </nav>
-        <span class="brand-text">Feline Games</span>
-    </header>
+        </header>
 
     <main class="main-container">
         
@@ -50,7 +53,7 @@
 
         <div class="content-card">
             <h1 class="content-title red-text">Murkmask - Horror Escape</h1>
-            <p class="content-text">Xiyang ("The Protagonist") is trapped in a confined house with his own mother who is infected with the D-Virus.</p>
+            <p class="content-text">Anthony McGuire ("The Protagonist") is trapped in a confined house with his own mother, Sophia - who is infected with the D-Virus.</p>
             <div class="badge-container">
                 <a href="#" class="store-badge" target="_blank">
                     <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
@@ -66,7 +69,7 @@
 
         <div class="content-card">
             <h1 class="content-title red-text">Murkmask: Revelations</h1>
-            <p class="content-text">A Planned Mainline Sequel to the first chapter exploring the consequences of this viral throughout the city from the POV of Edward (Father of Xiyang)</p>
+            <p class="content-text">A Planned Mainline Sequel to the first chapter exploring the consequences of this viral throughout the city from the POV of Edward (Father of Anthony)</p>
             <div class="badge-container">
                 <a href="#" class="store-badge" target="_blank">
                     <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
@@ -80,7 +83,7 @@
             </div>
         </div>
 
-        <div class="content-card">
+        <!--<div class="content-card">
             <h1 class="content-title yellow-text">Wildcard Horizon</h1>
             <p class="content-text">(A Concept Game) An Open World Game after a multiverse timeline corruption, trapped in a post-apocalyptic world with Beautiful Landscapes, Nature and Forests. Defeat and survive your enemies, wild creatures and huge monsters</p>
             <div class="badge-container">
@@ -93,21 +96,10 @@
                 <a href="#" class="store-badge" target="_blank">
                     <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store">
                 </a>
-            </div>
+            </div>-->
         </div>
 
     </main>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const menuPopup = document.getElementById('menuPopup');
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menuPopup.classList.toggle('show');
-        });
-        document.addEventListener('click', () => {
-            menuPopup.classList.remove('show');
-        });
-    </script>
 </body>
 </html>

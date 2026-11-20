@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="../../css/styles.css" />
     <link rel="stylesheet" href="../../css/stylesheet.css" />
+    <link rel="stylesheet" href="../../css/stylesheets.css" />
+    <script src="../../javascript/home.js" defer></script>
+    <script src="../../javascript/menu.js" defer></script>
+    <script src="../../javascript/search.js" defer></script>
+    
 </head>
 <body class="policy-browse-body">
 
@@ -26,7 +31,7 @@
     <main class="policy-content">
 
         <a href="murkmask/index.html" class="browse-card">
-            <img src="../../assets/icons/murkmask.png" alt="Icon" class="browse-card-img">
+            <img src="../../assets/icons/video_games/murkmask.png" alt="Icon" class="browse-card-img">
             <div class="browse-card-text">
                 <h3 class="browse-card-title">Murkmask - Horror Escape</h3>
                 <p class="browse-card-desc">A Trademark™ of Feline Games</p>
@@ -34,24 +39,6 @@
         </a>
 
     </main>
-
-    <script>
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.browse-card');
-
-            cards.forEach(card => {
-                const title = card.querySelector('.browse-card-title').textContent.toLowerCase();
-                const desc = card.querySelector('.browse-card-desc').textContent.toLowerCase();
-
-                if (title.includes(searchTerm) || desc.includes(searchTerm)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>

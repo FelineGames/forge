@@ -20,6 +20,13 @@
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesheet.css" />
+    <link rel="stylesheet" href="../css/stylesheets.css" />
+    <link rel="stylesheet" href="../css/carousel.css" />
+    
+    <!--- JavaScript --->
+    <script src="../javascript/carousel.js" defer></script>
+    <script src="../javascript/home.js" defer></script>
+    <script src="../javascript/menu.js" defer></script>
 
     <script type="application/ld+json">
     {
@@ -33,14 +40,14 @@
 </head>
 <body>
 
-    <header class="navbar">
+        <header class="navbar">
+        <img src="../assets/icons/brands/felinegames.png" alt="Feline Games" class="brand-text">
         <button class="menu-button" id="menuToggle" aria-label="Toggle Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        
-        <!--- navigator --->
+            <!--- navigator --->
         <nav class="menu-popup" id="menuPopup">
             <a href="../downloads/">Downloads</a>
             <a href="../credits/">Credits</a>
@@ -48,18 +55,34 @@
             <a href="../archives/">Archives</a>
             <a href="#about-us" id="aboutUsBtn">About</a>
         </nav>
-
-        <span class="brand-text">Feline Games</span>
-    </header>
+        </header>
         
     <main class="main-container">
-        <div class="projects-btn-container">
+        <!--- <div class="projects-btn-container">
             <a href="https://github.com/felinegames">
                 <button class="projects-btn">Projects</button>
             </a>
         </div>
+        // Screenshot & Promotional Material Preview--->
+        <div class="img-carousel" id="imgCarousel">
+    <button class="img-carousel-btn img-carousel-prev" type="button" aria-label="Previous image">&lt;</button>
 
-        <h2 class="overview-heading">Other Pages</h2>
+    <div class="img-carousel-track">
+        <div class="img-slide">
+            <img src="../assets/icons/video_games/murkmask.png" alt="Screenshot 1">
+        </div>
+        <div class="img-slide">
+            <img src="../assets/icons/video_games/murkmask_2.png" alt="Screenshot 2">
+        </div>
+        <div class="img-slide">
+            <img src="../assets/icons/video_games/overview.png" alt="Screenshot 3">
+        </div>
+    </div>
+
+    <button class="img-carousel-btn img-carousel-next" type="button" aria-label="Next image">&gt;</button>
+</div>
+
+        <h2 class="overview-heading">More Pages</h2>
 
         <section class="media-list">
             
@@ -67,7 +90,7 @@
             <div class="media-item">
                 <img src="../assets/miscellaneous/downloads.png" alt="Page Icon" class="media-thumb" />
                 <div class="media-content">
-                    <p>Download Our Upcoming 2027 Flagship Titles</p>
+                    <p>Downloadable Video Games.</p>
                 </div>
                 <a href="../downloads/" class="media-link-btn">Go</a>
             </div>
@@ -76,7 +99,7 @@
             <div class="media-item">
                 <img src="../assets/miscellaneous/overview_0.png" alt="Page Icon" class="media-thumb" />
                 <div class="media-content">
-                    <p>Read about developer updates and announcements.</p>
+                    <p>Read Devlogs and Announcements.</p>
                 </div>
                 <a href="https://github.com/FelineGames/forge/discussions/categories/announcements" class="media-link-btn">Go</a>
             </div>
@@ -85,7 +108,7 @@
             <div class="media-item">
                 <img src="../assets/miscellaneous/updates.png" alt="Page Icon" class="media-thumb" />
                 <div class="media-content">
-                    <p>Read Changelogs for Murkmask Games.</p>
+                    <p>Read Changelogs for Games.</p>
                 </div>
                 <a href="../changelogs/" class="media-link-btn">Go</a>
             </div>
@@ -105,37 +128,27 @@
      <!--- clickable icons --->
     <div class="icon-row-container">
         <a href="" class="custom-icon-link">
-            <img src="../assets/icons/playstore.png" alt="Icon 1" class="custom-icon-img" />
+            <img src="../assets/icons/stores/playstore.svg" alt="Icon 1" class="custom-icon-img" />
         </a>
         <a href="" class="custom-icon-link">
-            <img src="../assets/icons/ms_store.svg" alt="Icon 2" class="custom-icon-img" />
+            <img src="../assets/icons/stores/ms_store.svg" alt="Icon 2" class="custom-icon-img" />
         </a>
         <a href="" class="custom-icon-link">
-            <img src="../assets/icons/flathub.png" alt="Icon 3" class="custom-icon-img" />
+            <img src="../assets/icons/stores/flathub.svg" alt="Icon 3" class="custom-icon-img" />
         </a>
     </div>
     ‎ 
     ‎ <!--- copyright declaration --->
     <p class="rights-holder">‎‎Copyright © 2026 FelineGames</p>
-    <p class="rights-holder">‎‎FelineGames™, All rights reserved.</p>
+    <p class="rights-holder">‎‎FelineGames™ - All rights reserved.</p>
     
     <!--- social links --->
     <footer class="dark-footer">
         <div class="footer-container">
 
             <div class="footer-column">
-                <a href="https://discord.com/invite/k4sZkXmXG3" class="media-link-btn">Discord</a>
-                <a href="https://t.me/felinegames" class="media-link-btn">Telegram</a>
-            </div>
-            
-            <div class="footer-column">
-                <a href="https://youtube.com/@FeIineGames" class="media-link-btn">YouTube</a>
-                <a href="https://twitter.com/@FelinineGames" class="media-link-btn">Twitter</a>
-            </div>
-            
-            <div class="footer-column">
-                <a href="../github/" class="media-link-btn">GitHub</a>
-                <a href="https://github.com/felinegamestudio" class="media-link-btn">Organisation</a>
+                <a href="../policy/terms/" class="media-link-btn">Terms of Service</a>
+                <a href="../policy/" class="media-link-btn">Privacy Policy</a>
             </div>
 
         </div>
@@ -150,6 +163,8 @@
             <div class="modal-body-layout">
                 <div class="modal-sidebar">
                     <button class="tab-btn active" data-tab="description">Description</button>
+                    <button class="tab-btn" data-tab="social">Social</button>
+                    <button class="tab-btn" data-tab="catalog">Catalog</button>
                     <button class="tab-btn" data-tab="legal">Legal</button>
                     <button class="tab-btn" data-tab="info">ⓘ Info</button>
                 </div>
@@ -157,6 +172,25 @@
                     <div class="modal-tab-content active" id="description-tab">
                         <p>Welcome to the Official Website of Feline Games - An Independent Studio Owned by Kelsa. </p>
                         <p>Murkmask - Horror Escape Currently in Development & Coming Soon to Android/Windows/Linux!</p>
+                    </div>
+                    <div class="modal-tab-content" id="social-tab">
+                        <div class="legal-buttons">
+                            <a href="https://youtube.com/@FelinineGames" class="legal-btn"><img src="../assets/icons/youtube.png" alt="">YouTube 1</a>
+                            <a href="https://youtube.com/@Murkmask" class="legal-btn"><img src="../assets/icons/youtube.png" alt="">YouTube 2</a>
+                            <a href="https://youtube.com/@FelinineGames" class="legal-btn"><img src="../assets/icons/youtube.png" alt="">YouTube 3</a>
+                            <a href="https://github.com/felinegames" class="legal-btn"><img src="../assets/icons/github.png" alt="">GitHub</a>
+                            <a href="https://github.com/felinegamestudio" class="legal-btn"><img src="../assets/icons/github.png" alt="">Organisation</a>
+                            <a href="https://x.com/FelinineGames" class="legal-btn"><img src="../assets/icons/twitter.png" alt="">Twitter</a>
+                            <a href="https://discord.gg/k4sZkXmXG3" class="legal-btn"><img src="../assets/icons/discord.png" alt="">Discord</a>
+                            <a href="https://t.me/felinegames" class="legal-btn"><img src="../assets/icons/telegram.png" alt="">Telegram</a>
+                        </div>
+                    </div>
+                    <div class="modal-tab-content" id="catalog-tab">
+                        <div class="legal-buttons">
+                            <a href="gamejolt.com/murkmask/1077909" class="legal-btn"><img src="../assets/icons/video_games/murkmask.png" alt="">Murkmask</a>
+                            <a href="gamejolt.com/murkmask_outbreak/1089653" class="legal-btn"><img src="../assets/icons/video_games/murkmask_2.png" alt="">Murkmask 2</a>
+                            <a href="https://github.com/felinegames/applibrary/releases" class="legal-btn"><!--<img src="../assets/icons/video_games/applibrary.png" alt=""-->Games Launcher</a>
+                        </div>
                     </div>
                     <div class="modal-tab-content" id="legal-tab">
                         <div class="legal-buttons">
@@ -166,93 +200,23 @@
                         </div>
                     </div>
                     <div class="modal-tab-content" id="info-tab">
-                        <p>Feline Games is an indie developer dedicated in working with Story Based Horror narratives. Founded in 2024 by notsummer69</p>
+                        <p>Feline Games™ is a Copyrighted Brand and Business owned by Kelsa. Founded in 2024 by .kelsa_</p>
                         <p class="socials-title">Storefronts</p>
                         <div class="socials-icons-row">
-                            <img src="../assets/icons/gamejolt.svg" alt="Social 1">
-                            <img src="../assets/icons/itch.io.svg" alt="Social 2">
-                            <img src="../assets/icons/gog.svg" alt="Social 3">
+                            <img src="../assets/icons/stores/gamejolt.svg" alt="Social 1">
+                            <img src="../assets/icons/stores/itch.io.svg" alt="Social 2">
+                            <img src="../assets/icons/stores/gog.svg" alt="Social 3">
+                        </div>
+                        <div class="socials-icons-row">
+                            <img src="../assets/icons/stores/playstore.svg" alt="Social 4">
+                            <img src="../assets/icons/stores/ms_store.svg" alt="Social 5">
+                            <img src="../assets/icons/stores/flathub.svg" alt="Social 6">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // --- Menu Logic ---
-        const menuToggle = document.getElementById('menuToggle');
-        const menuPopup = document.getElementById('menuPopup');
-
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menuPopup.classList.toggle('show');
-        });
-
-        document.addEventListener('click', () => {
-            menuPopup.classList.remove('show');
-        });
-
-        // --- About Us Tabs Logic ---
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.modal-tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-
-                btn.classList.add('active');
-                const targetId = btn.getAttribute('data-tab') + '-tab';
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-
-        // --- Modals Operations Setup Handling System ---
-        const aboutUsBtn = document.getElementById('aboutUsBtn');
-        const aboutModal = document.getElementById('aboutModal');
-        const closeModal = document.getElementById('closeModal');
-
-        const tosBtn = document.getElementById('tosBtn');
-        const tosModal = document.getElementById('tosModal');
-        const closeTosModal = document.getElementById('closeTosModal');
-
-        aboutUsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            menuPopup.classList.remove('show');
-            aboutModal.classList.add('open');
-            document.body.classList.add('no-scroll');
-        });
-
-        if(tosBtn){
-            tosBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                tosModal.classList.add('open');
-                document.body.classList.add('no-scroll');
-            });
-        }
-
-        closeModal.addEventListener('click', () => {
-            aboutModal.classList.remove('open');
-            document.body.classList.remove('no-scroll'); 
-        });
-
-        closeTosModal.addEventListener('click', () => {
-            tosModal.classList.remove('open');
-            document.body.classList.remove('no-scroll'); 
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === aboutModal) {
-                aboutModal.classList.remove('open');
-                document.body.classList.remove('no-scroll');
-            }
-            if (e.target === tosModal) {
-                tosModal.classList.remove('open');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-    </script>
 
 </body>
 </html>

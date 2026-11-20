@@ -63,6 +63,7 @@ body.policy-browse-body {
 }
 
 .menu-button {
+	margin-left: auto;
     background: none;
     border: none;
     outline: none;
@@ -89,7 +90,7 @@ body.policy-browse-body {
     display: none;
     position: absolute;
     top: 50px;
-    left: 20px;
+    right: 20px;
     width: 180px;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;

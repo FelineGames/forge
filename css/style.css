@@ -47,6 +47,15 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     text-align: center;
     border: 1px solid #eaeaea;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.content-card .content-subtitle,
+.content-card .content-text,
+.content-card .content-title {
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .content-card.left-align {
