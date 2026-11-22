@@ -16,25 +16,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
     
-    <!--- styles --->
+    <!--- Stylesheets --->
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/stylesheet.css" />
     <link rel="stylesheet" href="../css/stylesheets.css" />
     <link rel="stylesheet" href="../css/carousel.css" />
+    <link rel="stylesheet" href="../css/context_menu.css" />
     
     <!--- JavaScript --->
     <script src="../javascript/carousel.js" defer></script>
     <script src="../javascript/home.js" defer></script>
     <script src="../javascript/menu.js" defer></script>
+    <script src="../javascript/context_menu.js" defer></script>
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": "https://felinegames.qzz.io/",
-      "name": "Feline Games",
-      "alternateName": "FelineGames"
+      "name": "FelineGames",
+      "alternateName": "Feline Games"
     }
     </script>
 </head>
@@ -48,13 +50,14 @@
             <span></span>
         </button>
             <!--- navigator --->
-        <nav class="menu-popup" id="menuPopup">
+                <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+        <aside class="right-sidebar" id="rightSidebar" aria-label="Navigation Sidebar">
             <a href="../downloads/">Downloads</a>
             <a href="../credits/">Credits</a>
             <a href="../changelogs/">Changelogs</a>
             <a href="../archives/">Archives</a>
             <a href="#about-us" id="aboutUsBtn">About</a>
-        </nav>
+        </aside> 
         </header>
         
     <main class="main-container">

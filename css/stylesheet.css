@@ -7,12 +7,29 @@
     display: block;
 }
 
-.navbar.navbar-dark .brand-text {
+.navbar.navbar-dark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: auto;
+    min-height: 56px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: visible;
     color: #ffffff;
-    font-size: 1.15rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    font-family: var(--ui-font);
+}
+
+.navbar.navbar-dark .nav-back-button,
+.navbar.navbar-dark .brand-text {
+    position: static;
+    top: auto;
+    margin: 0;
+    height: auto;
+    line-height: 1.3;
+    color: #ffffff;
+    opacity: 1;
+    visibility: visible;
+    flex-shrink: 0;
 }
 
 .overview-heading {

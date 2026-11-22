@@ -1,9 +1,11 @@
 const menuToggle = document.getElementById('menuToggle');
-        const menuPopup = document.getElementById('menuPopup');
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menuPopup.classList.toggle('show');
-        });
-        document.addEventListener('click', () => {
-            menuPopup.classList.remove('show');
-        });
+const rightSidebar = document.getElementById('rightSidebar');
+const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+if (menuToggle && rightSidebar && sidebarBackdrop) {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = rightSidebar.classList.toggle('open');
+        sidebarBackdrop.classList.toggle('open', isOpen);
+    });
+}
