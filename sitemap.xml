@@ -2,31 +2,38 @@
 <urlset xmlns="http://sitemaps.org">
   <!-- Homepage -->
   <url>
-    <loc>https://felinegames.qzz.io/</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://felinegames.qzz.io/home</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <!-- Services -->
+  <!-- Credits -->
   <url>
-    <loc>https://felinegames.qzz.io/services</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://felinegames.qzz.io/credits/loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- Archives -->
+  <url>
+    <loc>https://felinegames.qzz.io/archives</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  <!-- Projects -->
+  <!-- Downloads -->
   <url>
-    <loc>https://felinegames.qzz.io/projects</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://felinegames.qzz.io/updates</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>1.0</priority>
   </url>
-  <!-- Newsletter -->
+  <!-- Changelogs -->
   <url>
-    <loc>https://felinegames.qzz.io/newsletter</loc>
-    <lastmod>2026-06-25</lastmod>
+    <loc>https://felinegames.qzz.io/changelogs</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>1.0</priority>
   </url>
   <!-- Browse Policies -->
   <url>
@@ -35,11 +42,32 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-    <!-- Privacy Policy -->
+    <!-- policy/murkmask -->
   <url>
     <loc>https://felinegames.qzz.io/policy/murkmask</loc>
-    <lastmod>2026-06-25</lastmod>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+    <!-- policy/wrapface -->
+  <url>
+    <loc>https://felinegames.qzz.io/policy/wrapface</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+    <!-- Browse ToS -->
+  <url>
+    <loc>https://felinegames.qzz.io/policy/terms/</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+      <!-- terms/murkmask -->
+  <url>
+    <loc>https://felinegames.qzz.io/policy/terms/murkmask</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
